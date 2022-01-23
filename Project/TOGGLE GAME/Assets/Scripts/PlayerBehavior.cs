@@ -7,6 +7,8 @@ using Spine.Unity;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    private static PlayerBehavior instance;
+    public static PlayerBehavior Instance => instance;
 
     [SerializeField] private KeyCode rightKey;
     [SerializeField] private KeyCode leftKey;
@@ -14,7 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private KeyCode secondaryJumpkey;
     [SerializeField] private KeyCode interactionKey;
 
-    [Space(30),SerializeField]
+    [Space(30), SerializeField]
     private float horAcc;
     [SerializeField] private float horVelocityMax;
     [SerializeField] private float jumpForce;
@@ -33,14 +35,27 @@ public class PlayerBehavior : MonoBehaviour
     private bool inputEnabled = false;
 
     private Rigidbody2D rBody;
+    private SimpleSoundModule soundModule;
 
     private bool cliffHanged = false;
     private bool wallSliding = false;
     private bool grounded = false;
+    private bool landingSoundFlag = false;
+
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         rBody = GetComponent<Rigidbody2D>();
+        soundModule = GetComponent<SimpleSoundModule>();
     }
 
     private void OnEnable()
@@ -88,12 +103,18 @@ public class PlayerBehavior : MonoBehaviour
         {
             Debug.DrawLine(footRCO.position, footRCO.position + Vector3.down * 0.2f);
             grounded = true;
-
         }
         else
         {
             grounded = false;
         }
+
+        if (grounded && landingSoundFlag == true && rBody.velocity.y < 3f)
+        {
+            landingSoundFlag = false;
+            soundModule.Play("Land");
+        }
+
 
         if (-maxGravitalSpeed > rBody.velocity.y)
         {
@@ -110,9 +131,14 @@ public class PlayerBehavior : MonoBehaviour
                 if (grounded)
                 {
                     rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
+
+                    if (landingSoundFlag == false)
+                    {
+                        landingSoundFlag = true;
+                    }
                 }
 
-                if(specialJumpTimer < 0.3f)
+                if (specialJumpTimer < 0.3f)
                 {
                     Debug.Log("Special_Jump");
                     wallSliding = false;
@@ -127,11 +153,11 @@ public class PlayerBehavior : MonoBehaviour
                     {
                         rBody.velocity = new Vector3(transform.right.x * WalljumpForce.x, WalljumpForce.y);
                     }
-                   // rBody.AddForce((Vector2.up * jumpForce) + additinalWalljumpForce);
-                   //transform.rotation *= Quaternion.Euler(Vector3.up * 180f);
+                    // rBody.AddForce((Vector2.up * jumpForce) + additinalWalljumpForce);
+                    //transform.rotation *= Quaternion.Euler(Vector3.up * 180f);
                 }
 
-                if(cliffHanged)
+                if (cliffHanged)
                 {
                     Debug.Log("Special_Jump");
                     rBody.WakeUp();
@@ -164,7 +190,7 @@ public class PlayerBehavior : MonoBehaviour
                         }
                         else
                         {
-                            anim.SetBool("CliffHang",true);
+                            anim.SetBool("CliffHang", true);
                             cliffHanged = true;
                             specialJumpTimer = 0f;
                             rBody.Sleep();
@@ -187,7 +213,7 @@ public class PlayerBehavior : MonoBehaviour
         anim.SetBool("Grounded", grounded);
         anim.SetFloat("HorSpeedAbs", Mathf.Abs(rBody.velocity.x));
         anim.SetFloat("VertSpeedAbs", Mathf.Abs(rBody.velocity.y));
-        anim.SetFloat("VertSpeed",rBody.velocity.y);
+        anim.SetFloat("VertSpeed", rBody.velocity.y);
     }
     public void setMovementEnabled(bool value)
     {
@@ -215,6 +241,7 @@ public class PlayerBehavior : MonoBehaviour
 
         inputEnabled = true;
         anim.SetBool("false", true);
+
         yield return null;
     }
 }

@@ -47,6 +47,11 @@ public class StageMaster : MonoBehaviour
         }
     }
 
+    public void OnGameOver()
+    {
+
+    }
+
     private void Update()
     {
         
