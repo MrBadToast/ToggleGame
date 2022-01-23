@@ -48,6 +48,8 @@ public class Lamp : MonoBehaviour
 
                             StageMaster.Instance.SwitchMapState(true);
 
+                            GetComponent<SimpleSoundModule>().Play("Light");
+
                         }
                         else
                         {
@@ -55,6 +57,8 @@ public class Lamp : MonoBehaviour
                             cc.active = true;
 
                             StageMaster.Instance.SwitchMapState(false);
+
+                            GetComponent<SimpleSoundModule>().Play("Light");
                         }
                     }
                 }

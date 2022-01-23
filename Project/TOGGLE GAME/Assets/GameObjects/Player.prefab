@@ -259,6 +259,7 @@ MonoBehaviour:
   frontTopRCO: {fileID: 8991890114155091823}
   frontBottomRCO: {fileID: 8991890112712395155}
   anim: {fileID: 8991890112274838705}
+  sceneControl: {fileID: 0}
 --- !u!114 &8991890112574057052
 MonoBehaviour:
   m_ObjectHideFlags: 0

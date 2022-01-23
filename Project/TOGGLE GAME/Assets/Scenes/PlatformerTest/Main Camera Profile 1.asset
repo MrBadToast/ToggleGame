@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6970860805297808672
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.22
+    min: 0
+    max: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,6 +33,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 3148103073004234034}
+  - {fileID: -6970860805297808672}
 --- !u!114 &3148103073004234034
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -40,7 +60,7 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.6836158
           inSlope: -0.13523279
           outSlope: -0.13523279
           tangentMode: 0
@@ -48,10 +68,10 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
-          value: 0.10169494
-          inSlope: -1.8832378
-          outSlope: -1.8832378
+          time: 0.992
+          value: 0.022598863
+          inSlope: -0.42372912
+          outSlope: -0.42372912
           tangentMode: 0
           weightedMode: 0
           inWeight: 0

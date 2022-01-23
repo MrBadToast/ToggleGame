@@ -31,6 +31,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private Transform frontTopRCO;
     [SerializeField] private Transform frontBottomRCO;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject sceneControl;
 
     private bool inputEnabled = false;
 
@@ -93,6 +94,15 @@ public class PlayerBehavior : MonoBehaviour
 
     float specialJumpTimer = 0f;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(inputEnabled)
+        if (collision.gameObject.tag == "Ghost")
+        {
+                sceneControl.SetActive(true);
+        }
+    }
+
     public void Update()
     {
         bool jumpKeyDown = Input.GetKeyDown(jumpKey) || Input.GetKeyUp(secondaryJumpkey);
@@ -131,6 +141,9 @@ public class PlayerBehavior : MonoBehaviour
                 if (grounded)
                 {
                     rBody.velocity = new Vector2(rBody.velocity.x, jumpForce);
+
+                    wallSliding = false;
+                    cliffHanged = false;
 
                     if (landingSoundFlag == false)
                     {
@@ -220,6 +233,11 @@ public class PlayerBehavior : MonoBehaviour
         inputEnabled = value;
     }
 
+    public void OnGhostCaught()
+    {
+
+    }
+
     public void StunPlayer(float time)
     {
         StopStunCoroutine();
@@ -243,5 +261,13 @@ public class PlayerBehavior : MonoBehaviour
         anim.SetBool("false", true);
 
         yield return null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "NextGate")
+        {
+            collision.GetComponent<EndingPortal>().GoToEnding();
+        }
     }
 }

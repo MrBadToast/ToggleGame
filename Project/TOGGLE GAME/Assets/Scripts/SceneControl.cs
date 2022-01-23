@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
-    public DOTweenAnimation transition;
+    public DOTweenAnimation transition; 
 
     public void MoveSceneWithTransition(string SceneName)
     {
         StopAllCoroutines();
-        StartCoroutine("Cor_TransitionScenechange");
+        StartCoroutine("Cor_TransitionScenechange",SceneName);
     }
 
     private IEnumerator Cor_TransitionScenechange(string sceneName)
     {
-        transition.DOPlayAllById("FADE_OUT");
+       transition.DOPlayAllById("FADE_OUT");
 
         yield return new WaitForSeconds(1f);
 
