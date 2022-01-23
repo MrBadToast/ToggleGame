@@ -1,0 +1,47 @@
+rat.png
+size:343,110
+filter:Linear,Linear
+pma:true
+body
+bounds:2,32,76,159
+rotate:90
+eyeball
+bounds:318,35,23,23
+offsets:1,1,24,25
+left arm
+bounds:211,3,31,44
+left down leg
+bounds:170,7,30,23
+left foot
+bounds:312,74,34,18
+offsets:1,1,35,19
+rotate:90
+lrft ear
+bounds:244,2,46,48
+offsets:0,0,47,49
+rotate:90
+lrft upper leg
+bounds:221,50,50,58
+offsets:0,0,51,58
+nose
+bounds:312,60,16,12
+pupil
+bounds:330,63,8,9
+right dow leg
+bounds:134,2,34,28
+offsets:1,1,36,30
+right ear
+bounds:273,57,37,51
+right hand
+bounds:163,32,15,46
+rotate:90
+right up legg
+bounds:163,49,56,59
+offsets:0,0,57,59
+rught foot
+bounds:294,9,46,22
+offsets:0,1,46,24
+rotate:90
+tail
+bounds:2,2,28,130
+rotate:90

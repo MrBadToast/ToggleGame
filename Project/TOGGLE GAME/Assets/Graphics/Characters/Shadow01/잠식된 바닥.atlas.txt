@@ -1,0 +1,40 @@
+잠식된 바닥.png
+size:1756,1058
+filter:Linear,Linear
+pma:true
+BLACK BOX
+bounds:2,663,1202,393
+HORN1
+bounds:1150,314,144,575
+rotate:90
+HORN2
+bounds:762,381,280,386
+rotate:90
+KNIFE
+bounds:2,129,287,607
+rotate:90
+LEFT EYE
+bounds:611,95,81,95
+rotate:90
+MOUTH
+bounds:2,2,530,125
+NEEDLE
+bounds:1150,460,196,568
+rotate:90
+NEEDLE1
+bounds:1068,93,219,664
+rotate:90
+RIGHT EYE
+bounds:534,24,72,103
+TRAP1
+bounds:1206,658,203,480
+rotate:90
+TRAP2
+bounds:611,178,201,455
+rotate:90
+TRICEP
+bounds:1206,863,193,548
+rotate:90
+needlee
+bounds:2,418,243,758
+rotate:90

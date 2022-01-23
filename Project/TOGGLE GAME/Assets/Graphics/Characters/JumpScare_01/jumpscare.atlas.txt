@@ -1,0 +1,40 @@
+jumpscare.png
+size:2033,2001
+filter:Linear,Linear
+pma:true
+Game over
+bounds:1637,1552,311,447
+Game over Cha
+bounds:1277,34,234,402
+rotate:90
+body
+bounds:2,607,1040,1392
+left ear
+bounds:729,3,546,602
+offsets:0,1,546,603
+left eye
+bounds:1950,1871,128,70
+rotate:90
+left eyerow
+bounds:1044,724,127,51
+left hand
+bounds:1277,270,505,476
+rotate:90
+mouth 1
+bounds:1044,777,609,546
+rotate:90
+mouth2
+bounds:2,2,603,725
+rotate:90
+right ear
+bounds:1044,1388,591,611
+right eye
+bounds:1592,862,130,64
+right eyebrow
+bounds:1681,140,128,49
+rotate:90
+right hand
+bounds:1592,928,458,439
+rotate:90
+레ose이어 4
+bounds:1637,1435,190,115
